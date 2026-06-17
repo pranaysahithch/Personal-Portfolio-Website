@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chelluboina Pranay Sahith — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent: #7c6ff7;
+    --accent2: #a78bfa;
+    --accent3: #38bdf8;
+    --glass: rgba(255,255,255,0.06);
+    --glass-border: rgba(255,255,255,0.12);
+    --glass-hover: rgba(255,255,255,0.10);
+    --text: #f0f0ff;
+    --text2: #a0a0c0;
+    --text3: #6060a0;
+    --bg: #080818;
+    --bg2: #0e0e24;
+    --radius: 18px;
+    --radius-sm: 10px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── ANIMATED BACKGROUND ─────────────────── */
+  .bg-orbs {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+  }
+  .orb {
+    position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.18;
+    animation: float 12s ease-in-out infinite;
+  }
+  .orb-1 { width: 500px; height: 500px; background: #7c6ff7; top: -100px; left: -100px; animation-delay: 0s; }
+  .orb-2 { width: 400px; height: 400px; background: #38bdf8; bottom: 10%; right: -80px; animation-delay: -4s; }
+  .orb-3 { width: 300px; height: 300px; background: #a78bfa; top: 40%; left: 30%; animation-delay: -8s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+  }
+
+  /* ── NAVBAR ──────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(8,8,24,0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 1.1rem; color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--accent2); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--text2); text-decoration: none; font-size: 0.875rem;
+    font-weight: 500; transition: color 0.2s; letter-spacing: 0.02em;
+  }
+  .nav-links a:hover { color: var(--accent2); }
+
+  /* ── WRAPPER ─────────────────────────────── */
+  main { position: relative; z-index: 1; }
+
+  /* ── SECTION COMMONS ─────────────────────── */
+  section { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent2);
+    background: rgba(124,111,247,0.12); border: 1px solid rgba(167,139,250,0.2);
+    padding: 5px 14px; border-radius: 100px; margin-bottom: 1.25rem;
+  }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+    line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1rem;
+  }
+  .section-sub { font-size: 1rem; color: var(--text2); line-height: 1.7; max-width: 560px; margin-bottom: 3rem; }
+
+  /* ── GLASS CARD ──────────────────────────── */
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  }
+  .glass:hover {
+    background: var(--glass-hover);
+    border-color: rgba(167,139,250,0.25);
+    transform: translateY(-3px);
+  }
+
+  /* ── HERO ────────────────────────────────── */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 7rem 2rem 4rem; max-width: 1100px; margin: 0 auto;
+  }
+  .hero-inner { flex: 1; }
+  .hero-greeting {
+    font-size: 1rem; color: var(--accent2); font-weight: 500;
+    letter-spacing: 0.06em; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-greeting::before {
+    content: ''; display: block; width: 40px; height: 1.5px; background: var(--accent2);
+  }
+  .hero-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 800;
+    line-height: 1.0; letter-spacing: -0.04em; margin-bottom: 0.5rem;
+  }
+  .hero-name .first { color: var(--text); }
+  .hero-name .last {
+    background: linear-gradient(135deg, var(--accent2), var(--accent3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-role {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--text2);
+    font-weight: 400; margin-bottom: 2rem;
+  }
+  .hero-role strong { color: var(--accent2); font-weight: 600; }
+  .hero-desc { font-size: 1rem; color: var(--text2); line-height: 1.8; max-width: 520px; margin-bottom: 2.5rem; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 0.8rem 1.8rem; border-radius: 100px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-weight: 600; font-size: 0.9rem;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 0.8rem 1.8rem; border-radius: 100px;
+    background: transparent; color: var(--text2);
+    font-weight: 500; font-size: 0.9rem; text-decoration: none;
+    border: 1px solid var(--glass-border); cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); transform: translateY(-1px); }
+
+  .hero-stats {
+    display: flex; gap: 2rem; margin-top: 3.5rem; flex-wrap: wrap;
+  }
+  .hero-stat { text-align: left; }
+  .hero-stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem; font-weight: 700; color: var(--accent2);
+  }
+  .hero-stat-label { font-size: 0.8rem; color: var(--text3); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* ── ABOUT ───────────────────────────────── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  @media(max-width:720px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-card { padding: 2rem; }
+  .about-avatar {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem;
+    font-weight: 700; color: #fff; margin-bottom: 1.5rem;
+  }
+  .about-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .about-role-badge {
+    display: inline-block; font-size: 0.75rem; font-weight: 600;
+    color: var(--accent2); background: rgba(124,111,247,0.12);
+    border: 1px solid rgba(167,139,250,0.2); padding: 3px 12px;
+    border-radius: 100px; margin-bottom: 1rem;
+  }
+  .about-text { font-size: 0.95rem; color: var(--text2); line-height: 1.8; margin-bottom: 1.5rem; }
+  .info-row { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; }
+  .info-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(124,111,247,0.15); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .info-label { font-size: 0.75rem; color: var(--text3); }
+  .info-val { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+  .about-upload { padding: 1.5rem; height: 100%; display: flex; flex-direction: column; }
+  .upload-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .upload-sub { font-size: 0.85rem; color: var(--text2); margin-bottom: 1.5rem; }
+  .upload-zone {
+    flex: 1; border: 1.5px dashed rgba(167,139,250,0.3); border-radius: 12px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.75rem; padding: 2rem; cursor: pointer; transition: all 0.2s;
+    min-height: 140px;
+  }
+  .upload-zone:hover { border-color: var(--accent2); background: rgba(124,111,247,0.05); }
+  .upload-icon { font-size: 2rem; opacity: 0.4; }
+  .upload-zone-text { font-size: 0.85rem; color: var(--text2); text-align: center; }
+  .upload-zone-sub { font-size: 0.75rem; color: var(--text3); }
+  .upload-btn {
+    margin-top: 1rem; width: 100%; padding: 0.65rem;
+    border-radius: 8px; background: rgba(124,111,247,0.15);
+    border: 1px solid rgba(167,139,250,0.25); color: var(--accent2);
+    font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+  }
+  .upload-btn:hover { background: rgba(124,111,247,0.25); }
+
+  /* ── SKILLS ──────────────────────────────── */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
+  .skill-card { padding: 1.5rem; }
+  .skill-icon-wrap {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(124,111,247,0.15); display: flex;
+    align-items: center; justify-content: center; font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .skill-name { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .skill-bar-bg { height: 4px; background: rgba(255,255,255,0.07); border-radius: 100px; overflow: hidden; }
+  .skill-bar { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width 1s cubic-bezier(.4,0,.2,1); }
+  .skill-pct { font-size: 0.75rem; color: var(--text2); margin-top: 0.4rem; }
+
+  /* ── PROJECTS ────────────────────────────── */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .project-card { padding: 1.75rem; position: relative; overflow: hidden; }
+  .project-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .project-card:hover::before { opacity: 1; }
+  .project-thumb {
+    width: 100%; aspect-ratio: 16/9; border-radius: 10px;
+    background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.1);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.5rem; margin-bottom: 1.25rem; cursor: pointer; transition: all 0.2s;
+    font-size: 0.8rem; color: var(--text3);
+    position: relative; overflow: hidden;
+  }
+  .project-thumb:hover { border-color: rgba(167,139,250,0.3); background: rgba(124,111,247,0.06); }
+  .project-thumb-icon { font-size: 1.8rem; opacity: 0.3; }
+  .project-thumb.has-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; position: absolute; inset: 0; }
+  .project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  .tag {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em;
+    padding: 3px 10px; border-radius: 100px;
+    background: rgba(124,111,247,0.12); color: var(--accent2);
+    border: 1px solid rgba(167,139,250,0.18);
+  }
+  .project-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .project-desc { font-size: 0.875rem; color: var(--text2); line-height: 1.7; margin-bottom: 1.25rem; }
+  .project-links { display: flex; gap: 0.75rem; }
+  .proj-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.8rem; font-weight: 600; padding: 5px 14px;
+    border-radius: 100px; border: 1px solid var(--glass-border);
+    color: var(--text2); text-decoration: none; transition: all 0.2s; cursor: pointer;
+  }
+  .proj-link:hover { color: var(--accent2); border-color: rgba(167,139,250,0.3); }
+  .proj-link.primary { background: rgba(124,111,247,0.15); color: var(--accent2); border-color: rgba(167,139,250,0.25); }
+  .add-project-card {
+    padding: 2rem; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 0.75rem;
+    min-height: 280px; cursor: pointer; border-style: dashed;
+  }
+  .add-project-card:hover { border-color: rgba(167,139,250,0.4); background: rgba(124,111,247,0.06); }
+  .add-icon { font-size: 2.5rem; opacity: 0.2; }
+  .add-label { font-size: 0.95rem; font-weight: 600; color: var(--text2); }
+  .add-sub { font-size: 0.8rem; color: var(--text3); text-align: center; }
+
+  /* ── CERTIFICATES ────────────────────────── */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .cert-card { padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
+  .cert-icon {
+    width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(124,111,247,0.25), rgba(56,189,248,0.15));
+    border: 1px solid rgba(167,139,250,0.2);
+    display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+  }
+  .cert-info { flex: 1; min-width: 0; }
+  .cert-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cert-issuer { font-size: 0.8rem; color: var(--text2); margin-bottom: 0.5rem; }
+  .cert-date { font-size: 0.75rem; color: var(--text3); }
+  .cert-actions { display: flex; gap: 6px; margin-top: 0.75rem; }
+  .cert-btn {
+    font-size: 0.75rem; padding: 3px 10px; border-radius: 100px;
+    border: 1px solid var(--glass-border); color: var(--text2);
+    background: transparent; cursor: pointer; transition: all 0.2s;
+  }
+  .cert-btn:hover { color: var(--accent2); border-color: rgba(167,139,250,0.3); }
+  .cert-upload {
+    padding: 2rem; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 0.5rem;
+    min-height: 130px; cursor: pointer; border-style: dashed;
+  }
+  .cert-upload:hover { border-color: rgba(167,139,250,0.4); background: rgba(124,111,247,0.06); }
+
+  /* ── EXPERIENCE ──────────────────────────── */
+  .exp-timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .exp-timeline::before {
+    content: ''; position: absolute; left: 22px; top: 28px; bottom: 0;
+    width: 1px; background: linear-gradient(to bottom, rgba(167,139,250,0.4), transparent);
+  }
+  .exp-item { display: flex; gap: 1.5rem; padding-bottom: 2.5rem; position: relative; }
+  .exp-dot {
+    width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; margin-top: 2px;
+    background: rgba(124,111,247,0.15); border: 1px solid rgba(167,139,250,0.25);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    position: relative; z-index: 1;
+  }
+  .exp-card { flex: 1; padding: 1.5rem; }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; }
+  .exp-role { font-size: 1rem; font-weight: 700; }
+  .exp-date { font-size: 0.8rem; color: var(--text2); background: rgba(255,255,255,0.05); padding: 3px 10px; border-radius: 100px; }
+  .exp-company { font-size: 0.875rem; color: var(--accent2); font-weight: 500; margin-bottom: 0.75rem; }
+  .exp-desc { font-size: 0.875rem; color: var(--text2); line-height: 1.7; margin-bottom: 1rem; }
+  .exp-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .exp-upload-item { display: flex; gap: 1.5rem; }
+  .exp-upload-dot { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; background: rgba(255,255,255,0.03); border: 1.5px dashed rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; opacity: 0.4; }
+  .exp-upload-card {
+    flex: 1; padding: 1.5rem; display: flex; align-items: center; gap: 1rem;
+    cursor: pointer; border-style: dashed;
+  }
+  .exp-upload-card:hover { border-color: rgba(167,139,250,0.4); background: rgba(124,111,247,0.05); }
+  .exp-upload-text { font-size: 0.9rem; color: var(--text2); }
+  .exp-upload-sub { font-size: 0.8rem; color: var(--text3); margin-top: 2px; }
+
+  /* ── CONTACT ─────────────────────────────── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  @media(max-width:720px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info { padding: 2rem; }
+  .contact-form { padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-size: 0.8rem; color: var(--text2); font-weight: 500; letter-spacing: 0.04em; }
+  .form-input, .form-textarea {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 0.7rem 1rem; color: var(--text);
+    font-family: 'Inter', sans-serif; font-size: 0.9rem;
+    transition: border-color 0.2s, background 0.2s; outline: none;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: rgba(167,139,250,0.5); background: rgba(124,111,247,0.07); }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .contact-link { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .contact-link:last-child { border-bottom: none; }
+  .c-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(124,111,247,0.12); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .c-label { font-size: 0.8rem; color: var(--text3); }
+  .c-val { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+
+  /* ── FOOTER ──────────────────────────────── */
+  footer {
+    text-align: center; padding: 2.5rem; color: var(--text3);
+    font-size: 0.825rem; border-top: 1px solid var(--glass-border);
+    position: relative; z-index: 1;
+  }
+  footer span { color: var(--accent2); }
+
+  /* ── MODAL ───────────────────────────────── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(8,8,24,0.85); backdrop-filter: blur(8px);
+    align-items: center; justify-content: center; padding: 1rem;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: #12122e; border: 1px solid rgba(167,139,250,0.2);
+    border-radius: 20px; padding: 2rem; width: 100%; max-width: 500px;
+    position: relative;
+  }
+  .modal-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .modal-sub { font-size: 0.875rem; color: var(--text2); margin-bottom: 1.5rem; }
+  .modal-close {
+    position: absolute; top: 1rem; right: 1rem; width: 32px; height: 32px;
+    border-radius: 50%; background: rgba(255,255,255,0.06); border: none;
+    color: var(--text2); font-size: 1rem; cursor: pointer; display: flex;
+    align-items: center; justify-content: center; transition: background 0.2s;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.12); }
+  .modal-drop {
+    border: 2px dashed rgba(167,139,250,0.3); border-radius: 14px;
+    padding: 2.5rem; text-align: center; margin-bottom: 1.25rem; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .modal-drop:hover { border-color: var(--accent2); background: rgba(124,111,247,0.06); }
+  .modal-drop-icon { font-size: 2.5rem; opacity: 0.3; margin-bottom: 0.75rem; }
+  .modal-drop-text { font-size: 0.9rem; color: var(--text2); margin-bottom: 0.25rem; }
+  .modal-drop-hint { font-size: 0.78rem; color: var(--text3); }
+  .modal-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 0.75rem; }
+  .modal-label { font-size: 0.78rem; color: var(--text2); font-weight: 500; }
+  .modal-input {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 0.6rem 0.9rem; color: var(--text);
+    font-family: 'Inter', sans-serif; font-size: 0.875rem; outline: none;
+  }
+  .modal-input:focus { border-color: rgba(167,139,250,0.5); }
+  .modal-actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
+  .modal-cancel {
+    flex: 1; padding: 0.7rem; border-radius: 10px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text2); font-size: 0.9rem; cursor: pointer; transition: all 0.2s;
+  }
+  .modal-cancel:hover { background: rgba(255,255,255,0.08); }
+  .modal-save {
+    flex: 2; padding: 0.7rem; border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: none; color: #fff; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .modal-save:hover { opacity: 0.9; }
+
+  /* ── TOAST ───────────────────────────────── */
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 300;
+    background: #12122e; border: 1px solid rgba(167,139,250,0.3);
+    border-radius: 12px; padding: 0.875rem 1.25rem;
+    font-size: 0.875rem; color: var(--text); display: flex; align-items: center; gap: 10px;
+    transform: translateY(100px); opacity: 0; transition: all 0.4s cubic-bezier(.4,0,.2,1);
+    pointer-events: none;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
+
+  /* ── SCROLLBAR ───────────────────────────── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(124,111,247,0.3); border-radius: 100px; }
+
+  @media(max-width:600px) {
+    nav { padding: 0.875rem 1.25rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.25rem; }
+    .hero-stats { gap: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Background -->
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- Navbar -->
+<nav>
+  <div class="nav-logo">CPS<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ── HERO ─────────────────────────────── -->
+<section id="hero">
+  <div class="hero-inner">
+    <p class="hero-greeting">Hello, World</p>
+    <h1 class="hero-name">
+      <span class="first">Chelluboina<br></span>
+      <span class="last">Pranay Sahith</span>
+    </h1>
+    <p class="hero-role">Student &amp; Aspiring <strong>Developer</strong></p>
+    <p class="hero-desc">
+      Passionate fresher building meaningful projects and growing every day.
+      Open to internships, collaborations, and exciting opportunities.
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#projects">View My Work</a>
+      <a class="btn-ghost" href="#contact">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" id="stat-projects">0</div>
+        <div class="hero-stat-label">Projects</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" id="stat-certs">0</div>
+        <div class="hero-stat-label">Certificates</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" id="stat-skills">0</div>
+        <div class="hero-stat-label">Skills</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ─────────────────────────────── -->
+<section id="about">
+  <div class="section-tag">✦ About Me</div>
+  <h2 class="section-title">Who I Am</h2>
+  <div class="about-grid">
+    <div class="glass about-card">
+      <div class="about-avatar">CPS</div>
+      <div class="about-name">Chelluboina Pranay Sahith</div>
+      <div class="about-role-badge">Student / Fresher</div>
+      <p class="about-text" id="about-bio">
+        A motivated and curious student eager to turn ideas into reality through code and design.
+        I love exploring new technologies, building projects, and contributing to meaningful work.
+        Currently seeking internships and opportunities to grow as a developer.
+      </p>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div><div class="info-label">Location</div><div class="info-val" id="info-location">Andhra Pradesh, India</div></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🎓</div>
+        <div><div class="info-label">Education</div><div class="info-val" id="info-edu">B.Tech — [Your College Name]</div></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div><div class="info-label">Email</div><div class="info-val" id="info-email">yourmail@email.com</div></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💼</div>
+        <div><div class="info-label">Status</div><div class="info-val" style="color:#4ade80;">Open to Opportunities</div></div>
+      </div>
+    </div>
+    <div class="glass about-upload">
+      <div class="upload-title">Profile Photo</div>
+      <div class="upload-sub">Upload your profile picture to personalize your portfolio</div>
+      <div class="upload-zone" onclick="triggerUpload('profile-photo-input')">
+        <div class="upload-icon" id="avatar-preview-icon">🖼️</div>
+        <div class="upload-zone-text">Click to upload photo</div>
+        <div class="upload-zone-sub">PNG, JPG — max 5MB</div>
+      </div>
+      <input type="file" id="profile-photo-input" accept="image/*" style="display:none" onchange="previewAvatar(this)">
+      <button class="upload-btn" onclick="openModal('edit-about')">✏️ Edit About Info</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ─────────────────────────────── -->
+<section id="skills">
+  <div class="section-tag">✦ Skills</div>
+  <h2 class="section-title">What I Know</h2>
+  <p class="section-sub">My current tech stack and proficiency levels. Update these as you grow!</p>
+  <div class="skills-grid" id="skills-container">
+    <!-- Skills rendered by JS -->
+  </div>
+  <div style="margin-top:1.5rem; text-align:center;">
+    <button class="btn-ghost" onclick="openModal('add-skill')">+ Add a Skill</button>
+  </div>
+</section>
+
+<!-- ── PROJECTS ───────────────────────────── -->
+<section id="projects">
+  <div class="section-tag">✦ Projects</div>
+  <h2 class="section-title">My Work</h2>
+  <p class="section-sub">Projects I've built. Add yours by clicking the card below.</p>
+  <div class="projects-grid" id="projects-container">
+    <!-- Project cards rendered by JS -->
+    <div class="glass add-project-card" onclick="openModal('add-project')">
+      <div class="add-icon">+</div>
+      <div class="add-label">Add New Project</div>
+      <div class="add-sub">Upload image, add title, description, tags & links</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CERTIFICATES ───────────────────────── -->
+<section id="certificates">
+  <div class="section-tag">✦ Certificates</div>
+  <h2 class="section-title">My Achievements</h2>
+  <p class="section-sub">Courses, workshops and certifications I've completed.</p>
+  <div class="certs-grid" id="certs-container">
+    <!-- Certs rendered by JS -->
+    <div class="glass cert-upload" onclick="openModal('add-cert')">
+      <div style="font-size:2rem; opacity:0.25;">🏆</div>
+      <div style="font-size:0.9rem; color:var(--text2); font-weight:600;">Add Certificate</div>
+      <div style="font-size:0.78rem; color:var(--text3);">Upload PDF or image</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ─────────────────────────── -->
+<section id="experience">
+  <div class="section-tag">✦ Experience</div>
+  <h2 class="section-title">My Journey</h2>
+  <p class="section-sub">Internships, roles, volunteer work and more.</p>
+  <div class="exp-timeline" id="exp-container">
+    <!-- Experience items rendered by JS -->
+    <div class="exp-upload-item">
+      <div class="exp-upload-dot">+</div>
+      <div class="glass exp-upload-card" onclick="openModal('add-exp')">
+        <div style="font-size:1.5rem; opacity:0.3;">🏢</div>
+        <div>
+          <div class="exp-upload-text">Add Experience or Internship</div>
+          <div class="exp-upload-sub">Role, company, duration, description</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────── -->
+<section id="contact">
+  <div class="section-tag">✦ Contact</div>
+  <h2 class="section-title">Let's Connect</h2>
+  <p class="section-sub">Have an opportunity or just want to say hi? I'd love to hear from you.</p>
+  <div class="contact-grid">
+    <div class="glass contact-info">
+      <div class="contact-link">
+        <div class="c-icon">📧</div>
+        <div><div class="c-label">Email</div><div class="c-val" id="c-email">yourmail@email.com</div></div>
+      </div>
+      <div class="contact-link">
+        <div class="c-icon">💼</div>
+        <div><div class="c-label">LinkedIn</div><div class="c-val" id="c-linkedin">linkedin.com/in/yourprofile</div></div>
+      </div>
+      <div class="contact-link">
+        <div class="c-icon">🐙</div>
+        <div><div class="c-label">GitHub</div><div class="c-val" id="c-github">github.com/yourhandle</div></div>
+      </div>
+      <div class="contact-link">
+        <div class="c-icon">📱</div>
+        <div><div class="c-label">Phone</div><div class="c-val" id="c-phone">+91 XXXXX XXXXX</div></div>
+      </div>
+      <div style="margin-top:1.5rem;">
+        <button class="btn-ghost" style="width:100%;" onclick="openModal('edit-contact')">✏️ Update Contact Info</button>
+      </div>
+    </div>
+    <div class="glass contact-form">
+      <h3 style="font-size:1rem; font-weight:600; margin-bottom:1rem;">Send a Message</h3>
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input class="form-input" type="text" placeholder="e.g. Ravi Kumar">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" placeholder="ravi@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Your message here..."></textarea>
+      </div>
+      <button class="btn-primary" onclick="showToast('Message sent! (Add your backend to enable this 😊)')">Send Message</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  Built with ❤️ by <span>Chelluboina Pranay Sahith</span> · Portfolio v1.0
+</footer>
+
+<!-- ── MODALS ─────────────────────────────── -->
+
+<!-- Add Project Modal -->
+<div class="modal-overlay" id="modal-add-project">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('add-project')">✕</button>
+    <div class="modal-title">Add New Project</div>
+    <div class="modal-sub">Fill in your project details</div>
+    <div class="modal-drop" onclick="triggerUpload('proj-img-input')">
+      <div class="modal-drop-icon">🖼️</div>
+      <div class="modal-drop-text">Upload Project Screenshot</div>
+      <div class="modal-drop-hint">PNG, JPG — click to browse</div>
+    </div>
+    <input type="file" id="proj-img-input" accept="image/*" style="display:none" onchange="storeFile(this,'proj-img')">
+    <div class="modal-field"><label class="modal-label">Project Title *</label><input class="modal-input" id="proj-title" placeholder="e.g. Weather App"></div>
+    <div class="modal-field"><label class="modal-label">Short Description</label><input class="modal-input" id="proj-desc" placeholder="What does it do?"></div>
+    <div class="modal-field"><label class="modal-label">Tech Tags (comma separated)</label><input class="modal-input" id="proj-tags" placeholder="React, Node.js, MongoDB"></div>
+    <div class="modal-field"><label class="modal-label">Live Demo URL</label><input class="modal-input" id="proj-demo" placeholder="https://..."></div>
+    <div class="modal-field"><label class="modal-label">GitHub URL</label><input class="modal-input" id="proj-github" placeholder="https://github.com/..."></div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal('add-project')">Cancel</button>
+      <button class="modal-save" onclick="saveProject()">Add Project</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Certificate Modal -->
+<div class="modal-overlay" id="modal-add-cert">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('add-cert')">✕</button>
+    <div class="modal-title">Add Certificate</div>
+    <div class="modal-sub">Upload your certificate file</div>
+    <div class="modal-drop" onclick="triggerUpload('cert-file-input')">
+      <div class="modal-drop-icon">🏆</div>
+      <div class="modal-drop-text">Upload Certificate (PDF or Image)</div>
+      <div class="modal-drop-hint" id="cert-filename">PDF, PNG, JPG — click to browse</div>
+    </div>
+    <input type="file" id="cert-file-input" accept=".pdf,image/*" style="display:none" onchange="storeFile(this,'cert-file')">
+    <div class="modal-field"><label class="modal-label">Certificate Title *</label><input class="modal-input" id="cert-title" placeholder="e.g. Python for Everybody"></div>
+    <div class="modal-field"><label class="modal-label">Issuing Organization</label><input class="modal-input" id="cert-issuer" placeholder="e.g. Coursera / NPTEL"></div>
+    <div class="modal-field"><label class="modal-label">Date Issued</label><input class="modal-input" id="cert-date" type="month"></div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal('add-cert')">Cancel</button>
+      <button class="modal-save" onclick="saveCert()">Add Certificate</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Experience Modal -->
+<div class="modal-overlay" id="modal-add-exp">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('add-exp')">✕</button>
+    <div class="modal-title">Add Experience</div>
+    <div class="modal-sub">Internship, job, volunteer work etc.</div>
+    <div class="modal-field"><label class="modal-label">Role / Position *</label><input class="modal-input" id="exp-role" placeholder="e.g. Frontend Intern"></div>
+    <div class="modal-field"><label class="modal-label">Company / Organization</label><input class="modal-input" id="exp-company" placeholder="e.g. XYZ Technologies"></div>
+    <div class="modal-field"><label class="modal-label">Duration</label><input class="modal-input" id="exp-dur" placeholder="e.g. June 2024 – Aug 2024"></div>
+    <div class="modal-field"><label class="modal-label">Description</label><input class="modal-input" id="exp-desc" placeholder="What did you do / achieve?"></div>
+    <div class="modal-field"><label class="modal-label">Skills Used (comma separated)</label><input class="modal-input" id="exp-skills" placeholder="HTML, CSS, JavaScript"></div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal('add-exp')">Cancel</button>
+      <button class="modal-save" onclick="saveExp()">Add Experience</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Skill Modal -->
+<div class="modal-overlay" id="modal-add-skill">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('add-skill')">✕</button>
+    <div class="modal-title">Add a Skill</div>
+    <div class="modal-sub">Add your skill and proficiency level</div>
+    <div class="modal-field"><label class="modal-label">Skill Name *</label><input class="modal-input" id="skill-name" placeholder="e.g. Python"></div>
+    <div class="modal-field"><label class="modal-label">Emoji Icon</label><input class="modal-input" id="skill-icon" placeholder="e.g. 🐍" maxlength="4"></div>
+    <div class="modal-field">
+      <label class="modal-label">Proficiency: <span id="skill-pct-label">70%</span></label>
+      <input type="range" id="skill-pct-range" min="10" max="100" step="5" value="70"
+        oninput="document.getElementById('skill-pct-label').textContent=this.value+'%'"
+        style="width:100%; margin-top:6px;">
+    </div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal('add-skill')">Cancel</button>
+      <button class="modal-save" onclick="saveSkill()">Add Skill</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit About Modal -->
+<div class="modal-overlay" id="modal-edit-about">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('edit-about')">✕</button>
+    <div class="modal-title">Edit About Info</div>
+    <div class="modal-sub">Update your personal details</div>
+    <div class="modal-field"><label class="modal-label">Bio / Description</label><textarea class="modal-input" id="edit-bio" style="min-height:80px;resize:vertical;"></textarea></div>
+    <div class="modal-field"><label class="modal-label">Location</label><input class="modal-input" id="edit-location" placeholder="City, State"></div>
+    <div class="modal-field"><label class="modal-label">Education</label><input class="modal-input" id="edit-edu" placeholder="Degree — College Name"></div>
+    <div class="modal-field"><label class="modal-label">Email</label><input class="modal-input" id="edit-email-about" placeholder="your@email.com"></div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal('edit-about')">Cancel</button>
+      <button class="modal-save" onclick="saveAbout()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Contact Modal -->
+<div class="modal-overlay" id="modal-edit-contact">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('edit-contact')">✕</button>
+    <div class="modal-title">Update Contact Info</div>
+    <div class="modal-sub">How people can reach you</div>
+    <div class="modal-field"><label class="modal-label">Email</label><input class="modal-input" id="edit-c-email" placeholder="your@email.com"></div>
+    <div class="modal-field"><label class="modal-label">LinkedIn URL</label><input class="modal-input" id="edit-c-linkedin" placeholder="linkedin.com/in/yourprofile"></div>
+    <div class="modal-field"><label class="modal-label">GitHub URL</label><input class="modal-input" id="edit-c-github" placeholder="github.com/yourhandle"></div>
+    <div class="modal-field"><label class="modal-label">Phone</label><input class="modal-input" id="edit-c-phone" placeholder="+91 XXXXX XXXXX"></div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal('edit-contact')">Cancel</button>
+      <button class="modal-save" onclick="saveContact()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <div class="toast-dot"></div>
+  <span id="toast-msg">Saved!</span>
+</div>
+
+<script>
+const state = {
+  skills: [
+    { icon:'💻', name:'HTML & CSS', pct:80 },
+    { icon:'⚡', name:'JavaScript', pct:65 },
+    { icon:'🐍', name:'Python', pct:70 },
+    { icon:'🎨', name:'UI Design', pct:60 },
+    { icon:'🗄️', name:'SQL', pct:55 },
+    { icon:'🔧', name:'Git & GitHub', pct:65 },
+  ],
+  projects: [],
+  certs: [],
+  exp: [],
+  fileStore: {}
+};
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function openModal(id) {
+  if (id === 'edit-about') {
+    document.getElementById('edit-bio').value = document.getElementById('about-bio').textContent.trim();
+    document.getElementById('edit-location').value = document.getElementById('info-location').textContent;
+    document.getElementById('edit-edu').value = document.getElementById('info-edu').textContent;
+    document.getElementById('edit-email-about').value = document.getElementById('info-email').textContent;
+  }
+  if (id === 'edit-contact') {
+    document.getElementById('edit-c-email').value = document.getElementById('c-email').textContent;
+    document.getElementById('edit-c-linkedin').value = document.getElementById('c-linkedin').textContent;
+    document.getElementById('edit-c-github').value = document.getElementById('c-github').textContent;
+    document.getElementById('edit-c-phone').value = document.getElementById('c-phone').textContent;
+  }
+  document.getElementById('modal-' + id).classList.add('active');
+}
+
+function closeModal(id) {
+  document.getElementById('modal-' + id).classList.remove('active');
+}
+
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('active');
+  });
+});
+
+function triggerUpload(inputId) {
+  document.getElementById(inputId).click();
+}
+
+function storeFile(input, key) {
+  if (!input.files[0]) return;
+  const file = input.files[0];
+  const url = URL.createObjectURL(file);
+  state.fileStore[key] = { url, name: file.name };
+  if (key === 'cert-file') {
+    document.getElementById('cert-filename').textContent = '✓ ' + file.name;
+  }
+}
+
+function previewAvatar(input) {
+  if (!input.files[0]) return;
+  const url = URL.createObjectURL(input.files[0]);
+  const icon = document.getElementById('avatar-preview-icon');
+  icon.innerHTML = '';
+  const img = document.createElement('img');
+  img.src = url;
+  img.style.cssText = 'width:80px;height:80px;object-fit:cover;border-radius:50%;';
+  icon.appendChild(img);
+  showToast('Photo uploaded!');
+}
+
+function renderSkills() {
+  const el = document.getElementById('skills-container');
+  el.innerHTML = state.skills.map(s => `
+    <div class="glass skill-card">
+      <div class="skill-icon-wrap">${s.icon}</div>
+      <div class="skill-name">${s.name}</div>
+      <div class="skill-bar-bg"><div class="skill-bar" style="width:${s.pct}%"></div></div>
+      <div class="skill-pct">${s.pct}% proficiency</div>
+    </div>
+  `).join('');
+  document.getElementById('stat-skills').textContent = state.skills.length;
+}
+
+function saveSkill() {
+  const name = document.getElementById('skill-name').value.trim();
+  if (!name) { showToast('Please enter a skill name'); return; }
+  const icon = document.getElementById('skill-icon').value.trim() || '🔵';
+  const pct = parseInt(document.getElementById('skill-pct-range').value);
+  state.skills.push({ icon, name, pct });
+  renderSkills();
+  closeModal('add-skill');
+  document.getElementById('skill-name').value = '';
+  document.getElementById('skill-icon').value = '';
+  document.getElementById('skill-pct-range').value = 70;
+  document.getElementById('skill-pct-label').textContent = '70%';
+  showToast('Skill added!');
+}
+
+function renderProjects() {
+  const cont = document.getElementById('projects-container');
+  const addCard = cont.querySelector('.add-project-card');
+  cont.innerHTML = '';
+  state.projects.forEach((p, i) => {
+    const tagsHtml = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
+    const imgHtml = p.imgUrl ? `<div class="project-thumb has-image"><img src="${p.imgUrl}" alt="${p.title}"></div>` :
+      `<div class="project-thumb"><div class="project-thumb-icon">🖥️</div><span>No image uploaded</span></div>`;
+    const demoBtn = p.demo ? `<a class="proj-link primary" href="${p.demo}" target="_blank">🔗 Demo</a>` : '';
+    const ghBtn = p.github ? `<a class="proj-link" href="${p.github}" target="_blank">🐙 GitHub</a>` : '';
+    cont.innerHTML += `
+      <div class="glass project-card">
+        ${imgHtml}
+        <div class="project-tags">${tagsHtml}</div>
+        <div class="project-title">${p.title}</div>
+        <div class="project-desc">${p.desc || 'No description added yet.'}</div>
+        <div class="project-links">${demoBtn}${ghBtn}</div>
+      </div>`;
+  });
+  const newAdd = document.createElement('div');
+  newAdd.className = 'glass add-project-card';
+  newAdd.innerHTML = '<div class="add-icon">+</div><div class="add-label">Add New Project</div><div class="add-sub">Upload image, add title, description, tags & links</div>';
+  newAdd.onclick = () => openModal('add-project');
+  cont.appendChild(newAdd);
+  document.getElementById('stat-projects').textContent = state.projects.length;
+}
+
+function saveProject() {
+  const title = document.getElementById('proj-title').value.trim();
+  if (!title) { showToast('Please enter a project title'); return; }
+  const tags = document.getElementById('proj-tags').value.split(',').map(t => t.trim()).filter(Boolean);
+  const img = state.fileStore['proj-img'];
+  state.projects.push({
+    title, tags, imgUrl: img ? img.url : null,
+    desc: document.getElementById('proj-desc').value.trim(),
+    demo: document.getElementById('proj-demo').value.trim(),
+    github: document.getElementById('proj-github').value.trim(),
+  });
+  delete state.fileStore['proj-img'];
+  renderProjects();
+  closeModal('add-project');
+  ['proj-title','proj-desc','proj-tags','proj-demo','proj-github'].forEach(id => document.getElementById(id).value = '');
+  showToast('Project added!');
+}
+
+function renderCerts() {
+  const cont = document.getElementById('certs-container');
+  const addCard = cont.querySelector('.cert-upload');
+  cont.innerHTML = '';
+  state.certs.forEach(c => {
+    const fileBtn = c.fileUrl ? `<button class="cert-btn" onclick="window.open('${c.fileUrl}')">📄 View</button>` : '';
+    cont.innerHTML += `
+      <div class="glass cert-card">
+        <div class="cert-icon">🏆</div>
+        <div class="cert-info">
+          <div class="cert-title">${c.title}</div>
+          <div class="cert-issuer">${c.issuer || 'Self-earned'}</div>
+          <div class="cert-date">${c.date || ''}</div>
+          <div class="cert-actions">${fileBtn}</div>
+        </div>
+      </div>`;
+  });
+  const addNew = document.createElement('div');
+  addNew.className = 'glass cert-upload';
+  addNew.innerHTML = '<div style="font-size:2rem;opacity:0.25;">🏆</div><div style="font-size:0.9rem;color:var(--text2);font-weight:600;">Add Certificate</div><div style="font-size:0.78rem;color:var(--text3);">Upload PDF or image</div>';
+  addNew.onclick = () => openModal('add-cert');
+  cont.appendChild(addNew);
+  document.getElementById('stat-certs').textContent = state.certs.length;
+}
+
+function saveCert() {
+  const title = document.getElementById('cert-title').value.trim();
+  if (!title) { showToast('Please enter a certificate title'); return; }
+  const file = state.fileStore['cert-file'];
+  state.certs.push({
+    title,
+    issuer: document.getElementById('cert-issuer').value.trim(),
+    date: document.getElementById('cert-date').value,
+    fileUrl: file ? file.url : null,
+  });
+  delete state.fileStore['cert-file'];
+  renderCerts();
+  closeModal('add-cert');
+  ['cert-title','cert-issuer','cert-date'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('cert-filename').textContent = 'PDF, PNG, JPG — click to browse';
+  showToast('Certificate added!');
+}
+
+const expEmojis = ['🏢','💡','🌱','🚀','🎯','🔬','🎨','📊'];
+function renderExp() {
+  const cont = document.getElementById('exp-container');
+  cont.innerHTML = '';
+  state.exp.forEach((e, i) => {
+    const tagsHtml = e.skills.map(t => `<span class="tag">${t}</span>`).join('');
+    cont.innerHTML += `
+      <div class="exp-item">
+        <div class="exp-dot">${expEmojis[i % expEmojis.length]}</div>
+        <div class="glass exp-card">
+          <div class="exp-header">
+            <div class="exp-role">${e.role}</div>
+            <div class="exp-date">${e.dur || ''}</div>
+          </div>
+          <div class="exp-company">${e.company || 'Organization'}</div>
+          <div class="exp-desc">${e.desc || 'Description not added.'}</div>
+          <div class="exp-tags">${tagsHtml}</div>
+        </div>
+      </div>`;
+  });
+  const addItem = document.createElement('div');
+  addItem.className = 'exp-upload-item';
+  addItem.innerHTML = `<div class="exp-upload-dot">+</div><div class="glass exp-upload-card" onclick="openModal('add-exp')"><div style="font-size:1.5rem;opacity:0.3;">🏢</div><div><div class="exp-upload-text">Add Experience or Internship</div><div class="exp-upload-sub">Role, company, duration, description</div></div></div>`;
+  cont.appendChild(addItem);
+}
+
+function saveExp() {
+  const role = document.getElementById('exp-role').value.trim();
+  if (!role) { showToast('Please enter a role'); return; }
+  const skills = document.getElementById('exp-skills').value.split(',').map(t => t.trim()).filter(Boolean);
+  state.exp.push({
+    role,
+    company: document.getElementById('exp-company').value.trim(),
+    dur: document.getElementById('exp-dur').value.trim(),
+    desc: document.getElementById('exp-desc').value.trim(),
+    skills,
+  });
+  renderExp();
+  closeModal('add-exp');
+  ['exp-role','exp-company','exp-dur','exp-desc','exp-skills'].forEach(id => document.getElementById(id).value = '');
+  showToast('Experience added!');
+}
+
+function saveAbout() {
+  document.getElementById('about-bio').textContent = document.getElementById('edit-bio').value.trim() || document.getElementById('about-bio').textContent;
+  document.getElementById('info-location').textContent = document.getElementById('edit-location').value.trim() || document.getElementById('info-location').textContent;
+  document.getElementById('info-edu').textContent = document.getElementById('edit-edu').value.trim() || document.getElementById('info-edu').textContent;
+  const em = document.getElementById('edit-email-about').value.trim();
+  if (em) { document.getElementById('info-email').textContent = em; document.getElementById('c-email').textContent = em; }
+  closeModal('edit-about');
+  showToast('About info updated!');
+}
+
+function saveContact() {
+  const fields = [['edit-c-email','c-email'],['edit-c-linkedin','c-linkedin'],['edit-c-github','c-github'],['edit-c-phone','c-phone']];
+  fields.forEach(([inp, out]) => {
+    const val = document.getElementById(inp).value.trim();
+    if (val) document.getElementById(out).textContent = val;
+  });
+  closeModal('edit-contact');
+  showToast('Contact info updated!');
+}
+
+function animateCounter(el, target, duration) {
+  let start = 0;
+  const step = Math.ceil(duration / target);
+  const interval = setInterval(() => {
+    start++;
+    el.textContent = start;
+    if (start >= target) { el.textContent = target + (target >= 10 ? '' : ''); clearInterval(interval); }
+  }, step);
+}
+
+renderSkills();
+renderProjects();
+renderCerts();
+renderExp();
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    animateCounter(document.getElementById('stat-projects'), state.projects.length || 0, 800);
+    animateCounter(document.getElementById('stat-certs'), state.certs.length || 0, 800);
+    animateCounter(document.getElementById('stat-skills'), state.skills.length, 600);
+  }, 400);
+});
+</script>
+</body>
+</html>
